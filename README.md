@@ -14,23 +14,23 @@ _Prerequisites: Docker & [Docker Compose][https://docs.docker.com/compose/]_.
 
 To start Cantaloupe, run:
 
-        docker-compose up server
+    docker-compose up server
 
 Now, [Cantaloupe is running on port 8182](http://localhost:8182/).
 
-By default, Cantaloupe will serve the images in the [`example-images`](example-images) directory. This directory currently contains one image: _[Panoramic view of Manhattan, showing Brooklyn Bridge under construction](https://digitalcollections.nypl.org/items/bceb5a80-d567-0131-e064-58d385a7bbd0)_ from the New York Public Library's Digital Collections.
+By default, Cantaloupe will serve the images in the [`example-images`](example-images) directory. This directory currently contains one image: _[General view, looking southwest to Manhattan from Manhattan Bridge, Manhattan](https://digitalcollections.nypl.org/items/510d47d9-4fb6-a3d9-e040-e00a18064a99)_ from the New York Public Library's Digital Collections.
 
 To view the [image information](https://iiif.io/api/image/2.1/#image-information) of this image, go to:
 
-http://localhost:8182/iiif/2/panoramic-view-of-manhattan.jpg/info.json
+http://localhost:8182/iiif/2/510d47d9-4fb6-a3d9-e040-e00a18064a99.jpg/info.json
 
 To view a scaled version of the image:
 
-http://localhost:8182/iiif/2/panoramic-view-of-manhattan.jpg/full/1000,/0/default.jpg
+http://localhost:8182/iiif/2/510d47d9-4fb6-a3d9-e040-e00a18064a99.jpg/full/1000,/0/default.jpg
 
 And to rotate the image by 90°:
 
-http://localhost:8182/iiif/2/panoramic-view-of-manhattan.jpg/full/1000,/90/default.jpg
+http://localhost:8182/iiif/2/nypl.digitalcollections.510d47d9-4fb6-a3d9-e040-e00a18064a99.001.g.jpg/full/1000,/90/default.jpg
 
 Notes:
 
@@ -43,6 +43,6 @@ There are many ways of [viewing IIIF images](https://iiif.io/apps-demos/#image-v
 
 https://beta.observablehq.com/@bertspaan/iiif-openseadragon
 
-To view _Panoramic view of Manhattan_ from the Cantaloupe server on localhost:8182:
+To view _General view, looking southwest to Manhattan from Manhattan Bridge, Manhattan_ from the Cantaloupe server on localhost:8182:
 
-https://beta.observablehq.com/@bertspaan/iiif-openseadragon?url=http://localhost:8182/iiif/2/panoramic-view-of-manhattan.jpg/info.json
+https://beta.observablehq.com/@bertspaan/iiif-openseadragon?url=http://localhost:8182/iiif/2/510d47d9-4fb6-a3d9-e040-e00a18064a99.jpg/info.json
