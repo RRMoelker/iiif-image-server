@@ -10,7 +10,7 @@ For more information, see:
 
 ## Cantaloupe
 
-_Prerequisites: Docker & [Docker Compose][https://docs.docker.com/compose/]_.
+_Prerequisites: Docker & [Docker Compose](https://docs.docker.com/compose/)_.
 
 To start Cantaloupe, run:
 
