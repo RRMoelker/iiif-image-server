@@ -26,11 +26,11 @@ http://localhost:8182/iiif/2/510d47d9-4fb6-a3d9-e040-e00a18064a99.jpg/info.json
 
 To view a scaled version of the image:
 
-http://localhost:8182/iiif/2/510d47d9-4fb6-a3d9-e040-e00a18064a99.jpg/full/1000,/0/default.jpg
+- http://localhost:8182/iiif/2/510d47d9-4fb6-a3d9-e040-e00a18064a99.jpg/full/1000,/0/default.jpg
 
 And to rotate the image by 90°:
 
-http://localhost:8182/iiif/2/nypl.digitalcollections.510d47d9-4fb6-a3d9-e040-e00a18064a99.001.g.jpg/full/1000,/90/default.jpg
+- http://localhost:8182/iiif/2/nypl.digitalcollections.510d47d9-4fb6-a3d9-e040-e00a18064a99.001.g.jpg/full/1000,/90/default.jpg
 
 Notes:
 
@@ -41,8 +41,8 @@ Notes:
 
 There are many ways of [viewing IIIF images](https://iiif.io/apps-demos/#image-viewing-clients). For testing purposes, you can use this Observable Notebook:
 
-https://beta.observablehq.com/@bertspaan/iiif-openseadragon
+- https://beta.observablehq.com/@bertspaan/iiif-openseadragon
 
 To view _General view, looking southwest to Manhattan from Manhattan Bridge, Manhattan_ from the Cantaloupe server on localhost:8182:
 
-https://beta.observablehq.com/@bertspaan/iiif-openseadragon?url=http://localhost:8182/iiif/2/510d47d9-4fb6-a3d9-e040-e00a18064a99.jpg/info.json
+- https://beta.observablehq.com/@bertspaan/iiif-openseadragon?url=http://localhost:8182/iiif/2/510d47d9-4fb6-a3d9-e040-e00a18064a99.jpg/info.json
