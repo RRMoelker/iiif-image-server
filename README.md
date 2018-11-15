@@ -22,7 +22,7 @@ By default, Cantaloupe will serve the images in the [`example-images`](example-i
 
 To view the [image information](https://iiif.io/api/image/2.1/#image-information) of this image, go to:
 
-http://localhost:8182/iiif/2/510d47d9-4fb6-a3d9-e040-e00a18064a99.jpg/info.json
+- http://localhost:8182/iiif/2/510d47d9-4fb6-a3d9-e040-e00a18064a99.jpg/info.json
 
 To view a scaled version of the image:
 
