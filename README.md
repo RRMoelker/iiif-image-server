@@ -30,7 +30,7 @@ To view a scaled version of the image:
 
 And to rotate the image by 90°:
 
-- http://localhost:8182/iiif/2/nypl.digitalcollections.510d47d9-4fb6-a3d9-e040-e00a18064a99.001.g.jpg/full/1000,/90/default.jpg
+- http://localhost:8182/iiif/2/510d47d9-4fb6-a3d9-e040-e00a18064a99.jpg/full/1000,/90/default.jpg
 
 Notes:
 
