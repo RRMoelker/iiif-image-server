@@ -25,7 +25,7 @@ node {
     stage("Build image") {
         tryStep "build", {
             docker.withRegistry('https://repo.data.amsterdam.nl','docker-registry') {
-                def image = docker.build("datapunt/IIIF:${env.BUILD_NUMBER}"," .")
+                def image = docker.build("datapunt/IIIF:${env.BUILD_NUMBER}")
                 image.push()
             }
         }
@@ -83,8 +83,8 @@ if (BRANCH == "master") {
             tryStep "deployment", {
                 build job: 'Subtask_Openstack_Playbook',
                 parameters: [
-                        [$class: 'StringParameterValue', name: 'INVENTORY', value: 'production'],
-                        [$class: 'StringParameterValue', name: 'PLAYBOOK', value: 'deploy-IIIF.yml'],
+                    [$class: 'StringParameterValue', name: 'INVENTORY', value: 'production'],
+                    [$class: 'StringParameterValue', name: 'PLAYBOOK', value: 'deploy-IIIF.yml'],
                 ]
             }
         }
