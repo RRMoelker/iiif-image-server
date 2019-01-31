@@ -40,7 +40,7 @@ if (BRANCH == "master") {
         stage('Push acceptance image') {
             tryStep "image tagging", {
                 docker.withRegistry('https://repo.data.amsterdam.nl','docker-registry') {
-                    def image = docker.image("datapunt/IIIF:${env.BUILD_NUMBER}")
+                    def image = docker.image("datapunt/iiif:${env.BUILD_NUMBER}")
                     image.pull()
                     image.push("acceptance")
                 }
@@ -69,7 +69,7 @@ if (BRANCH == "master") {
         stage('Push production image') {
             tryStep "image tagging", {
                docker.withRegistry('https://repo.data.amsterdam.nl','docker-registry') {
-                def image = docker.image("datapunt/IIIF:${env.BUILD_NUMBER}")
+                def image = docker.image("datapunt/iiif:${env.BUILD_NUMBER}")
                     image.pull()
                     image.push("production")
                     image.push("latest")
