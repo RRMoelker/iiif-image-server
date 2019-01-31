@@ -6,9 +6,6 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8182:8182"
-    volumes:
-      - "./example-images/:/images"
-      - "./config/:/etc/config"
     # environment:
       # SOURCE_STATIC: FilesystemSource
       # FILESYSTEMSOURCE_BASICLOOKUPSTRATEGY_PATH_PREFIX: /imageroot/
