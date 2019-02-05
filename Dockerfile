@@ -54,9 +54,13 @@ RUN mkdir -p /var/log/cantaloupe /var/cache/cantaloupe \
     && chown -R cantaloupe /var/log/cantaloupe /var/cache/cantaloupe \
     && cp /usr/local/cantaloupe/deps/Linux-x86-64/lib/* /usr/lib/
 
-COPY config/cantaloupe.properties /etc/cantaloupe.properties
+RUN mkdir -p /etc/cantaloupe
+
+COPY config/cantaloupe.properties /etc/cantaloupe/cantaloupe.properties
+COPY config/delegates.rb /etc/cantaloupe/delegates.rb
+
 COPY example-images/ /images/
 
 USER cantaloupe
 # ENTRYPOINT ["docker-entrypoint.sh"]
-CMD ["sh", "-c", "java -Dcantaloupe.config=/etc/cantaloupe.properties -Xmx2g -jar /usr/local/cantaloupe/cantaloupe-$CANTALOUPE_VERSION.war"]
+CMD ["sh", "-c", "java -Dcantaloupe.config=/etc/cantaloupe/cantaloupe.properties -Xmx2g -jar /usr/local/cantaloupe/cantaloupe-$CANTALOUPE_VERSION.war"]

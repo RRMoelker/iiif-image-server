@@ -35,7 +35,6 @@ And to rotate the image by 90°:
 Notes:
 
 1. The [Dockerfile in this repository](Dockerfile) is based on a Dockerfile from [MIT Libraries](https://github.com/MITLibraries/docker-cantaloupe/blob/master/Dockerfile);
-2. This repository's [Cantaloupe configuration file](config/cantaloupe.properties#L103) enables the [Cantaloupe administration interface](http://localhost:8182/admin) (username: `admin`, password: `admin`).
 
 ## Viewing IIIF images
 
@@ -46,3 +45,11 @@ There are many ways of [viewing IIIF images](https://iiif.io/apps-demos/#image-v
 To view _General view, looking southwest to Manhattan from Manhattan Bridge, Manhattan_ from the Cantaloupe server on localhost:8182:
 
 - https://beta.observablehq.com/@bertspaan/iiif-openseadragon?url=http://localhost:8182/iiif/2/510d47d9-4fb6-a3d9-e040-e00a18064a99.jpg/info.json
+
+
+## Delegate Script
+
+See:
+
+- [`config/delegates.rb`](config/delegates.rb)
+- https://medusa-project.github.io/cantaloupe/manual/4.0/delegate-script.html
