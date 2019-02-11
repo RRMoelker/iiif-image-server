@@ -173,9 +173,9 @@ class CustomDelegate
     when 'edepot' then
       uri = URI.decode(identifier)
       return {
-        :uri => "https://bwt.uitplaatsing.hcp-a.basis.lan/rest/#{uri}",
-        :username => ENV['EDEPOT_USERNAME'],
-        :secret => ENV['EDEPOT_PASSWORD']
+        "uri" => "https://bwt.uitplaatsing.hcp-a.basis.lan/rest/#{uri}",
+        "username" => ENV['EDEPOT_USERNAME'],
+        "secret" => ENV['EDEPOT_PASSWORD']
       }
     end
   end
