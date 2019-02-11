@@ -1,3 +1,5 @@
+require 'uri'
+
 # Adapted from:
 # https://github.com/medusa-project/cantaloupe/blob/develop/delegates.rb.sample
 
@@ -73,6 +75,12 @@ class CustomDelegate
   # @param options [Hash] Empty hash.
   # @return [Boolean,Hash<String,Object>] See above.
   #
+  def identifier_parts
+    identifier = context['identifier']
+    parts = identifier.split(':', 2)
+    return parts.first, parts.last
+  end
+
   def authorized?(options = {})
     true
   end
@@ -114,15 +122,11 @@ class CustomDelegate
   # @return [String] Source name.
   #
   def source(options = {})
-    # TODO: create function
-    identifier = context['identifier']
-    parts = identifier.split(':', 2)
-    namespace = parts.first
+    namespace, identifier = identifier_parts()
 
-    if namespace == 'objectstore'
-      return 'HttpSource'
-    else
-      return 'FilesystemSource'
+    case namespace
+    when 'objectstore', 'edepot' then 'HttpSource'
+    else 'FilesystemSource'
     end
   end
 
@@ -140,11 +144,9 @@ class CustomDelegate
   #                      given identifier, or nil if not found.
   #
   def filesystemsource_pathname(options = {})
-    # TODO: create function
-    identifier = context['identifier']
-    parts = identifier.split(':', 2)
+    namespace, identifier = identifier_parts()
 
-    return "/images/#{parts.last}"
+    return "/images/#{identifier}"
   end
 
   ##
@@ -162,11 +164,20 @@ class CustomDelegate
   # @return See above.
   #
   def httpsource_resource_info(options = {})
-    # TODO: create function
-    identifier = context['identifier']
-    parts = identifier.split(':', 2)
+    namespace, identifier = identifier_parts()
 
-    return "https://f8d5776e78674418b6f9a605807e069a.objectstore.eu/Images/#{parts.last}"
+    # TODO: read base URIs from config file
+    case namespace
+    when 'objectstore' then
+      return "https://f8d5776e78674418b6f9a605807e069a.objectstore.eu/Images/#{identifier}"
+    when 'edepot' then
+      uri = URI.decode(identifier)
+      return {
+        :uri => "https://bwt.uitplaatsing.hcp-a.basis.lan/rest/#{uri}",
+        :username => ENV['EDEPOT_USERNAME'],
+        :secret => ENV['EDEPOT_PASSWORD']
+      }
+    end
   end
 
   ##

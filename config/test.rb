@@ -2,10 +2,22 @@
 
 require './delegates'
 
+identifier = ARGV[0]
+
+if !identifier
+  raise 'No image identifier set. Usage: ./test.rb <image identifier>'
+end
+
 obj = CustomDelegate.new
 obj.context = {
-  'identifier' => 'objectstore:beeldbank-B00000026214.jpg',
+  'identifier' => identifier,
   'client_ip' => '127.0.0.1'
 }
 
-puts obj.source
+puts "Using Source: #{obj.source}"
+
+if obj.source == 'FilesystemSource'
+  puts "  #{obj.filesystemsource_pathname}"
+elsif obj.source == 'HttpSource'
+  puts obj.httpsource_resource_info
+end
