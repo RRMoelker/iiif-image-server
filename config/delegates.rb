@@ -172,10 +172,27 @@ class CustomDelegate
       return "https://f8d5776e78674418b6f9a605807e069a.objectstore.eu/Images/#{identifier}"
     when 'edepot' then
       uri = URI.decode(identifier)
+
+      # With cUrl, we can log in like this:
+      #  curl --data 'j_username=USERNAME' --data 'j_password=PASSWORD' --data 'j_domain=BASIS.LAN' \
+      #    -c ~/cookies.txt -v -k https://bwt.uitplaatsing.hcp-a.basis.lan/j_security_check
+      #
+      # Then, cookies.txt will contain HCAP-Login:
+      #  curl -b ~/cookies.txt -v -k -o image.jpg \
+      #    https://bwt.uitplaatsing.hcp-a.basis.lan/rest/SA/00037/SA00000244_00002.jpg
+      #
+      # Or, without cookies.txt:
+      #  curl --header 'Cookie: HCAP-Login="COOKIE_VALUE""' \
+      #    -v -k -o image.jpg \
+      #    https://bwt.uitplaatsing.hcp-a.basis.lan/rest/SA/00037/SA00000244_00002.jpg
+
       return {
         "uri" => "https://bwt.uitplaatsing.hcp-a.basis.lan/rest/#{uri}",
-        "username" => ENV['EDEPOT_USERNAME'],
-        "secret" => ENV['EDEPOT_PASSWORD']
+        # "username" => ENV['EDEPOT_USERNAME'],
+        # "secret" => ENV['EDEPOT_PASSWORD'],
+        "headers" => {
+          "Cookie" => ENV['EDEPOT_COOKIE']
+        }
       }
     end
   end
