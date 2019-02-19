@@ -175,8 +175,6 @@ class CustomDelegate
 
       return {
         "uri" => "https://bwt.uitplaatsing.hcp-a.basis.lan/rest/#{uri}",
-        # "username" => ENV['EDEPOT_USERNAME'],
-        # "secret" => ENV['EDEPOT_PASSWORD'],
         "headers" => {
           "Authorization" => ENV['HCP_AUTHORIZATION']
         }
