@@ -125,7 +125,7 @@ class CustomDelegate
     namespace, identifier = identifier_parts()
 
     case namespace
-    when 'objectstore', 'edepot' then 'HttpSource'
+    when 'objectstore', 'edepot', 'beeldbank' then 'HttpSource'
     else 'FilesystemSource'
     end
   end
@@ -170,6 +170,8 @@ class CustomDelegate
     case namespace
     when 'objectstore' then
       return "https://f8d5776e78674418b6f9a605807e069a.objectstore.eu/Images/#{identifier}"
+    when 'beeldbank' then
+      return "https://beeldbank.amsterdam.nl/component/ams_memorixbeeld_download/?format=download&id=#{identifier}"
     when 'edepot' then
       uri = URI.decode(identifier)
 
