@@ -6,8 +6,3 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8182:8182"
-    # environment:
-      # SOURCE_STATIC: FilesystemSource
-      # FILESYSTEMSOURCE_BASICLOOKUPSTRATEGY_PATH_PREFIX: /imageroot/
-      # FILESYSTEMSOURCE_BASICLOOKUPSTRATEGY_PATH_SUFFIX: ''
-
