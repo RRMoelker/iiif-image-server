@@ -19,28 +19,6 @@ RUN adduser --system cantaloupe
 
 WORKDIR /tmp
 
-# KAKADU Install
-RUN mkdir -p /tools && \
-    cd /tools && \
-    wget -O kakadu.zip http://kakadusoftware.com/wp-content/uploads/2014/06/KDU7A2_Demo_Apps_for_Ubuntu-x86-64_170827.zip && \
-    unzip kakadu.zip -d kakadu && \
-    rm -f kakadu.zip
-
-ENV PATH /tools/kakadu/KDU7A2_Demo_Apps_for_Ubuntu-x86-64_170827:${PATH}
-ENV LD_LIBRARY_PATH /tools/kakadu/KDU7A2_Demo_Apps_for_Ubuntu-x86-64_170827:${LD_LIBRARY_PATH}
-
-#ImageMagick 7 install - re-evaluate once officially deprecated
-#RUN cd /tools && \
-#    wget http://imagemagick.org/download/releases/ImageMagick-$IMAGEMAGICK_VERSION.tar.xz && \
-#    tar -xf ImageMagick-$IMAGEMAGICK_VERSION.tar.xz && \
-#    cd ImageMagick-$IMAGEMAGICK_VERSION && \
-#    ./configure --prefix /usr/local && \
-#    make && \
-#    make install && \
-#    cd .. && \
-#    ldconfig /usr/local/lib && \
-#    rm -rf  ImageMagick*
-
 # Get and unpack Cantaloupe release archive
 RUN curl -OL https://github.com/medusa-project/cantaloupe/releases/download/v$CANTALOUPE_VERSION/Cantaloupe-$CANTALOUPE_VERSION.zip \
     && mkdir -p /usr/local/ \
