@@ -1,9 +1,6 @@
-# Adapted from https://github.com/MITLibraries/docker-cantaloupe/blob/master/Dockerfile
+FROM ubuntu:18.04
 
-FROM openjdk:10-slim
-
-ENV CANTALOUPE_VERSION=4.0.2
-#ENV IMAGEMAGICK_VERSION=7.0.8-14
+ENV CANTALOUPE_VERSION=4.0.3
 
 EXPOSE 8182
 
@@ -11,7 +8,9 @@ VOLUME /images
 
 # Update packages and install tools
 RUN apt-get update -y && \
-    apt-get install -y --no-install-recommends wget unzip graphicsmagick curl imagemagick ffmpeg python && \
+    apt-get install -y --no-install-recommends \
+      wget unzip graphicsmagick curl imagemagick \
+      ffmpeg python default-jre && \
     rm -rf /var/lib/apt/lists/*
 
 # Run non privileged
@@ -40,5 +39,5 @@ COPY config/delegates.rb /etc/cantaloupe/delegates.rb
 COPY example-images/ /images/
 
 USER cantaloupe
-# ENTRYPOINT ["docker-entrypoint.sh"]
+
 CMD ["sh", "-c", "java -Dcantaloupe.config=/etc/cantaloupe/cantaloupe.properties -Xmx2g -jar /usr/local/cantaloupe/cantaloupe-$CANTALOUPE_VERSION.war"]
