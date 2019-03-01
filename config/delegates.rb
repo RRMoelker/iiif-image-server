@@ -1,9 +1,18 @@
-require 'uri'
-
-# Adapted from:
-# https://github.com/medusa-project/cantaloupe/blob/develop/delegates.rb.sample
-
+##
+# Sample Ruby delegate script containing stubs and documentation for all
+# available delegate methods. See the user manual for more information.
+#
+# The application will create an instance of this class early in the request
+# cycle and dispose of it at the end of the request cycle. Instances don't need
+# to be thread-safe, but sharing information across instances (requests)
+# **does** need to be done thread-safely.
+#
+# This version of the script works with Cantaloupe version 4, and not earlier
+# versions. Likewise, earlier versions of the script are not compatible with
+# Cantaloupe 4.
+#
 class CustomDelegate
+
   ##
   # Attribute for the request context, which is a hash containing information
   # about the current request.
@@ -47,6 +56,12 @@ class CustomDelegate
   #
   attr_accessor :context
 
+  def identifier_parts
+    identifier = context['identifier']
+    parts = identifier.split(':', 2)
+    return parts.first, parts.last
+  end
+
   ##
   # Returns authorization status for the current request. Will be called upon
   # all requests to all public endpoints.
@@ -75,17 +90,8 @@ class CustomDelegate
   # @param options [Hash] Empty hash.
   # @return [Boolean,Hash<String,Object>] See above.
   #
-  def identifier_parts
-    identifier = context['identifier']
-    parts = identifier.split(':', 2)
-    return parts.first, parts.last
-  end
-
-  def authorized?(options = {})
+  def authorize(options = {})
     true
-  end
-
-  def redirect(options = {})
   end
 
   ##
@@ -144,9 +150,6 @@ class CustomDelegate
   #                      given identifier, or nil if not found.
   #
   def filesystemsource_pathname(options = {})
-    namespace, identifier = identifier_parts()
-
-    return "/images/#{identifier}"
   end
 
   ##
