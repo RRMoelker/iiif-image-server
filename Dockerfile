@@ -20,7 +20,8 @@ RUN adduser --system cantaloupe
 WORKDIR /tmp
 
 # Get and unpack Cantaloupe release archive
-RUN wget https://github.com/medusa-project/cantaloupe/archive/develop.zip
+# TODO: directory name might change!
+RUN wget https://github.com/Amsterdam/cantaloupe/archive/develop.zip
 RUN unzip develop.zip
 RUN cd /tmp/cantaloupe-develop && mvn clean package -DskipTests
 RUN cd /usr/local \
