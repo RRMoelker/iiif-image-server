@@ -34,9 +34,7 @@ node {
     }
 }
 
-String BRANCH = "${env.BRANCH_NAME}"
-
-if (BRANCH == "master") {
+if (${env.BRANCH_NAME} == "master") {
 
     node {
         stage('Push acceptance image') {
