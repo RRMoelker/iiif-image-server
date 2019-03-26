@@ -23,7 +23,7 @@ WORKDIR /tmp
 # TODO: directory name might change!
 RUN wget https://github.com/Amsterdam/cantaloupe/archive/develop.zip
 RUN unzip develop.zip
-RUN cd /tmp/cantaloupe-develop && mvn clean package -DskipTests -Djava.net.useSystemProxies=true -Dmaven.wagon.http.ssl.insecure=true
+RUN cd /tmp/cantaloupe-develop && mvn clean package -DskipTests -Djava.net.useSystemProxies=true -Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true
 RUN cd /usr/local \
       && unzip /tmp/cantaloupe-develop/target/cantaloupe-4.1-SNAPSHOT.zip \
       && ln -s cantaloupe-4.1-SNAPSHOT cantaloupe
