@@ -26,7 +26,10 @@ node {
         tryStep "build", {
             docker.withRegistry('https://repo.data.amsterdam.nl','docker-registry') {
                 def image = docker.build("datapunt/iiif:${env.BUILD_NUMBER}",
-                    "--build-arg http_proxy=http://10.240.2.1:8080 --build-arg https_proxy=http://10.240.2.1:8080 .")
+                    "--build-arg http_proxy=http://10.240.2.1:8080
+                     --build-arg https_proxy=http://10.240.2.1:8080
+                     MAVEN_OPTS=-Dhttp.proxyHost=10.240.2.1 -Dhttp.proxyPort=8080 -Dhttp.nonProxyHosts=localhost|127.0.0.1
+                     .")
                 image.push()
             }
         }
