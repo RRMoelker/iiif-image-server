@@ -23,7 +23,7 @@ WORKDIR /tmp
 # TODO: directory name might change!
 RUN wget https://github.com/Amsterdam/cantaloupe/archive/develop.zip
 RUN unzip develop.zip
-RUN cd /tmp/cantaloupe-develop && mvn clean package -DskipTests
+RUN env && cd /tmp/cantaloupe-develop && mvn clean package -DskipTests -Dhttp.proxyHost=10.240.2.1 -Dhttp.proxyPort=8080 -Dhttp.nonProxyHosts=localhost|127.0.0.1
 RUN cd /usr/local \
       && unzip /tmp/cantaloupe-develop/target/cantaloupe-4.1-SNAPSHOT.zip \
       && ln -s cantaloupe-4.1-SNAPSHOT cantaloupe
@@ -36,7 +36,7 @@ RUN cd /usr/local \
 #     && rm -rf /tmp/Cantaloupe-$CANTALOUPE_VERSION \
 #     && rm /tmp/Cantaloupe-$CANTALOUPE_VERSION.zip
 
-RUN mkdir -p /var/log/cantaloupe /var/cache/cantaloupe \
+RUN mkdir -p /var/log/cantaloupe /var/cache/cantaloupe \grafana.data.amsterdam.nl.
     && chown -R cantaloupe /var/log/cantaloupe /var/cache/cantaloupe \
     && cp /usr/local/cantaloupe/deps/Linux-x86-64/lib/* /usr/lib/
 
