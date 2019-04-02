@@ -23,7 +23,7 @@ WORKDIR /tmp
 # TODO: directory name might change!
 RUN wget https://github.com/Amsterdam/cantaloupe/archive/develop.zip
 RUN unzip develop.zip
-RUN cd /tmp/cantaloupe-develop && MAVEN_OPTS="-Dhttp.proxyHost=10.240.2.1 -Dhttp.proxyPort=8080 -Dhttp.nonProxyHosts=localhost|127.0.0.1" mvn clean package -DskipTests
+RUN cd /tmp/cantaloupe-develop && export MAVEN_OPTS="-Dhttp.proxyHost=10.240.2.1 -Dhttp.proxyPort=8080 -Dhttp.nonProxyHosts=localhost|127.0.0.1" && mvn clean package -DskipTests
 RUN cd /usr/local \
       && unzip /tmp/cantaloupe-develop/target/cantaloupe-4.1-SNAPSHOT.zip \
       && ln -s cantaloupe-4.1-SNAPSHOT cantaloupe
