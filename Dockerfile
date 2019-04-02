@@ -36,7 +36,7 @@ RUN cd /usr/local \
 #     && rm -rf /tmp/Cantaloupe-$CANTALOUPE_VERSION \
 #     && rm /tmp/Cantaloupe-$CANTALOUPE_VERSION.zip
 
-RUN mkdir -p /var/log/cantaloupe /var/cache/cantaloupe \grafana.data.amsterdam.nl.
+RUN mkdir -p /var/log/cantaloupe /var/cache/cantaloupe \grafana.data.amsterdam.nl. \
     && chown -R cantaloupe /var/log/cantaloupe /var/cache/cantaloupe \
     && cp /usr/local/cantaloupe/deps/Linux-x86-64/lib/* /usr/lib/
 
