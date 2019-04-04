@@ -1,4 +1,5 @@
 FROM ubuntu:18.04
+
 ARG MAVEN_OPTS
 # ENV CANTALOUPE_VERSION=4.0.3
 
@@ -36,7 +37,7 @@ RUN cd /usr/local \
 #     && rm -rf /tmp/Cantaloupe-$CANTALOUPE_VERSION \
 #     && rm /tmp/Cantaloupe-$CANTALOUPE_VERSION.zip
 
-RUN mkdir -p /var/log/cantaloupe /var/cache/cantaloupe \grafana.data.amsterdam.nl. \
+RUN mkdir -p /var/log/cantaloupe /var/cache/cantaloupe \
     && chown -R cantaloupe /var/log/cantaloupe /var/cache/cantaloupe \
     && cp /usr/local/cantaloupe/deps/Linux-x86-64/lib/* /usr/lib/
 
