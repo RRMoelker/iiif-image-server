@@ -53,4 +53,4 @@ USER cantaloupe
 
 WORKDIR /etc/cantaloupe
 
-CMD ["sh", "-c", "java -Dcantaloupe.config=/etc/cantaloupe/cantaloupe.properties -Dhttp.proxyHost=10.240.2.1 -Dhttp.proxyPort=8080 -Dhttps.proxyHost=10.240.2.1 -Dhttps.proxyPort=8080 -Xmx2g -jar /usr/local/cantaloupe/cantaloupe-4.1-SNAPSHOT.war"]
+CMD ["sh", "-c", "java -Dcantaloupe.config=/etc/cantaloupe/cantaloupe.properties -Xmx2g -jar /usr/local/cantaloupe/cantaloupe-4.1-SNAPSHOT.war"]
